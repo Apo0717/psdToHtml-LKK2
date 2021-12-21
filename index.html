@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LKK切版練習</title>
+  <link rel="stylesheet" href="./lkk.css">
+</head>
+
+<body>
+  <div id="lkkAll">
+    <div class="banner-wrap">
+    </div>
+    <main>
+      <div class="top-link-rwd">
+        <div class="top-link-burger" @click="navIsClick = !navIsClick">
+          <div class="top-bar-icon">
+            <div class="icon"></div>
+            <div class="icon"></div>
+            <div class="icon"></div>
+          </div>
+        </div>
+        <div class="top-link-rwd-info" v-show="navIsClick">
+          <div class="top-link2">
+            <a href="">網站導覽</a> | <a href="">回首頁</a> | <a href="">回新北市政府</a>
+          </div>
+          <div class="search-bar2">
+            <input type="text" placeholder="請輸入關鍵字"><button class="icon-search"></button>
+          </div>
+          <div class="nav-list2">
+            <div class="nav-box2" v-for="(i, k) in navList" :key="k">
+              {{i.topName}}<span class="triangle"></span>
+              <div class="drop">
+                <div class="drop-box" v-for="(e, k) in (i.secName)" :key="k">{{e}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="cotainer banner-center">
+
+        <div class="logo">
+          <img src="./imgs/uploaddowndoc.png" alt="logo-img">
+        </div>
+
+        <div class="top-link">
+          <a href="">網站導覽</a> | <a href="">回首頁</a> | <a href="">回新北市政府</a>
+        </div>
+
+        <div class="search-bar">
+          <input type="text" placeholder="請輸入關鍵字"><button class="icon-search"></button>
+        </div>
+
+        <div class="nav-list">
+          <div class="nav-box" v-for="(i, k) in navList" :key="k">
+            {{i.topName}}<span class="triangle"></span>
+            <div class="drop">
+              <div class="drop-box" v-for="(e, k) in (i.secName)" :key="k">{{e}}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="cotainer main-wrap">
+        <div class="d-f d-c">
+          <!-- 上方輪播牆 -->
+          <div class="slide-show">
+            <div class="slide-img">
+              <img src="./imgs/slide-show.jpeg" alt="活動輪播">
+            </div>
+          </div>
+          <!-- 農民曆  -->
+          <div class="life-info">
+            <div class="three-box">
+              <div class="right-box calender-box">
+                <div class="day-box-icon">
+                  <img src="./imgs/icon_calendar.png" alt="日曆">
+                </div>
+                <p>110 - 07 - 26</p>
+                <p>星期一 12 : 34</p>
+              </div>
+              <div class="right-box pm-box">
+                <div class="day-box-icon">
+                  <img src="./imgs/icon_pm.png" alt="懸浮微粒指數">
+                </div>
+                <p class="num">8</p>
+                <p>細懸浮微粒指數</p>
+              </div>
+
+              <a class="right-box weather-box" href="https://www.cwb.gov.tw/V8/C/" target="_blank">
+                <p>新北市</p>
+                <p class="tem">34~37 ℃</p>
+                <p>晴時多雲</p>
+                <p>降雨機率:10%</p>
+              </a>
+            </div>
+
+            <div class="china-calender-wrap">
+              <div class="china-calender-box">
+                <div class="china-calender-title">
+                  <p>農曆06月(小)17日</p>
+                </div>
+                <div class="china-calender">
+                  <span class="ok">宜</span>
+                  <p class="china-calender-text">祭祀 祈福 齋醮 出行 納采 訂盟 安機械 出火 拆卸 修造 動土 起基
+                    移徙 入宅 造廟 入殮 除服 成服 移柩 破土 安葬 謝土</p>
+                </div>
+                <div class="china-calender">
+                  <span class="no">忌</span>
+                  <p class="china-calender-text">嫁娶 開市 栽種 合壽木</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="china-calender-box2"></div>
+
+
+          </div>
+        </div>
+        <!-- ~~~~~~~~~~~~~娛樂方框選項 ~~~~~~~~~~~~~~-->
+        <div class="play-nav">
+          <div class="play-box" v-for="(i,k) in playImg" :key="k">
+            <img :src="'./imgs/' + i.img" alt="play-box" :title="i.name">
+          </div>
+        </div>
+
+        <!-- ~~~~~~~~~~~~~~~活動~~~~~~~~~~~~~~ -->
+        <div>
+          <div class="act-info">
+            <div class="act act-title">
+              <p>活動訊息</p>
+              <button class="more more-act" title="更多活動訊息">看更多</button>
+            </div>
+            <div class="act act-title2" title="城市沙雕藝術-八里左岸浪漫婚「沙」">
+              <span>2020-0804</span>
+              <p>城市沙雕藝術-八里左岸浪漫婚「沙」</p>
+            </div>
+          </div>
+          <div>
+            <div class="act-wrap">
+              <div class="act-row">
+                <div class="act-box" v-for="(act1,k) in actRow1" :key="k">
+                  <div>
+                    <img :src="'./imgs/' + act1.pic" alt="act1.title" class="act-img">
+                  </div>
+                  <div class="act-small-title">
+                    <a href="" :title="act1.title">{{ act1.title }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="act-t-c">
+            <button class="more" title="更多新聞">更多訊息</button>
+          </div>
+
+          <div>
+            <div class="act-wrap">
+              <div class="act-row">
+                <div class="act-box" v-for="(act2,k) in actRow2" :key="k">
+                  <div>
+                    <iframe width="100%" height="246.39" :src="act2.video" :title="act2.title" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+                  </div>
+                  <div class="act-small-title">
+                    <a href="" :title="act2.title">{{ act2.title }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="act-t-c">
+            <button class="more" title="更多影音">更多訊息</button>
+          </div>
+        </div>
+      </div>
+
+    </main>
+    <footer>
+      <div class="foot-banner"></div>
+      <div class="cotainer foot-wrap">
+        <!-- 下面的重複城市背景 -->
+
+        <div class="cotainer foot-center">
+          <!-- 收合按鈕 -->
+          <div class="btn-wrap">
+            <button class="exp" @click="isClick = !isClick" v-show="!isClick">展開<span class="triangle"></span></button>
+            <button class="exp" @click="isClick = !isClick" v-show="isClick">收合<span
+                class="in-triangle"></span></button>
+          </div>
+
+          <!-- 很多字的詳細區 -->
+          <div class="foot-big-info-wrap" v-show="isClick">
+            <div class="big-info-item" v-for="(item,k) in bigInfo" :key="k">
+              <ul>{{ item.first }}
+                <li v-for="(itemS,k) in (item.sec)" :key="k">
+                  {{ itemS }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 聯絡區 -->
+          <div class="foot-contact">
+            <div class="foot-contact-text">
+              <p>(02)29603456</p>
+              <p>地址：(22001) 新北市板橋區中山路1段161號</p>
+              <p>服務時間 : 星期一至星期五 上午8：30~下午5：30</p>
+            </div>
+            <div class="foot-contact-qr">
+              <ul class="d-f">
+                <li class="qr">
+                  <img src="./imgs/FB.jpg" alt="FB">
+                </li>
+                <li class="qr">
+                  <img src="./imgs/LINE.jpg" alt="LINE">
+                </li>
+                <li>
+                  <a href="https://accessibility.ncc.gov.tw/Applications/Detail?category=20210311094427"
+                    title="無障礙網站(另開新視窗)" target="_blank"><img src="./imgs/icon_cce.png" alt="無障礙標章"></a>
+                </li>
+                <li>
+                  <a href="https://www.gov.tw/Default.aspx" title="我的E政府(另開新視窗)" target="_blank">
+                    <img src="./imgs/icon_gov.png" alt="GOV">
+                </li>
+              </ul>
+              <div class="foot-bottom">
+                <a class="foot-bottom-a" href="">聯絡我們</a>|<a class="foot-bottom-a" href="">著作權聲明</a>
+              </div>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+    </footer>
+  </div>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/http-vue-loader"></script>
+  <script>
+    Vue.use(httpVueLoader);
+    let lkkAll = new Vue({
+      el: '#lkkAll',
+      name: "lkkAll",
+      data() {
+        return {
+          isClick: false,
+          navIsClick: false,
+          navList: [
+            {
+              topName: '查詢補助', secName: ['醫療補助', '保健補助', '重陽敬老禮金', '生活津貼', '特別照顧津貼'], thirdName: ['一般健保', '農民健保']
+            },
+            {
+              topName: '醫療保健', secName: ['新北醫藥通', '高齡醫學整合性門診', '社區藥局', '新北新巴士', '失智篩檢量表', '醫療補助', '農漁民健檢'], thirdName: ['一般健保', '農民健保']
+            },
+            {
+              topName: '尋找照護', secName: ['公共托老中心', '出院準備服務', '長期照顧服務', '營養餐飲服務', '安寧照護', '社區照顧關懷據點'], thirdName: ['一般健保', '農民健保']
+            },
+            {
+              topName: '友善環境', secName: ['戶政行動化服務', '輔具與環境改善', '電梯增設', '住屋修繕', '高齡友善公有市場', '高齡友善新北公車候車環境'], thirdName: ['一般健保', '農民健保']
+            },
+            {
+              topName: '來找樂趣', secName: ['老人共餐', '可食地景', '原住民老人照顧服務據點', '銀髮俱樂部'], thirdName: ['一般健保', '農民健保']
+            },
+            {
+              topName: '常見問題', secName: null, thirdName: ['一般健保', '農民健保']
+            }],
+          playImg: [
+            {
+              name: '查福利',
+              img: 'uploaddowndoc (5).png'
+            },
+            {
+              name: '顧身體',
+              img: 'uploaddowndoc (4).png'
+            },
+            {
+              name: '上課趣',
+              img: 'uploaddowndoc (3).png'
+            },
+            {
+              name: '來唱歌',
+              img: 'uploaddowndoc (2).png'
+            },
+            {
+              name: '動健康',
+              img: 'uploaddowndoc (1).png'
+            },
+            {
+              name: '逗陣玩',
+              img: 'uploaddowndoc (6).png'
+            }
+          ],
+          actRow1: [
+            { pic: 'mask.png', title: '如何脫口罩 您清楚嗎?' },
+            { pic: 'uploaddowndoc (8).jpeg', title: '新北市2030願景工程-智能3環 健康新北零距離 侯友宜：110年打造全國第一座智能失智友善村' },
+            { pic: 'uploaddowndoc (7).jpeg', title: '侯友宜與祖孫歡慶祖父母節　持續推動青銀共融與代間學習' },
+            { pic: 'uploaddowndoc (6).jpeg', title: '全國首創「新北市長照交通接送服務平台」 讓長輩叫車更方便' },
+            { pic: 'uploaddowndoc (3).jpeg', title: '振興券『詐騙簡訊』流竄   請民眾勿點擊來路不明網址！' }],
+          actRow2: [
+            {
+              video: 'https://www.youtube.com/embed/s_s3BhWbilk', title: '【當我們老在一起】夏季特別企劃－三峽輕旅行'
+            },
+            {
+              video: "https://www.youtube.com/embed/ftemDcHx5kI", title: '【新北產地餐桌】春天限定美味~珠蔥篇'
+            },
+            {
+              video: 'https://www.youtube.com/embed/67WNdEObUI8', title: '金山圖書館創客空間 開放民眾製布口罩'
+            }
+          ],
+          bigInfo: [
+            { first: '查詢補助', sec: ['醫療補助', '健保補助', '重陽敬老禮金', '生活津貼', '特別照顧津貼', '住院看護補助'] },
+            { first: '醫療保健', sec: ['新北醫藥通', '健康測量InBody', '社區藥局'] },
+            { first: '尋找照護', sec: ['公共托老中心', '出院準備服務', '長期照護服務', '安寧照護', '失智服務', '獨居老人關懷'] },
+            { first: '友善環境', sec: ['戶政行動化服務', '電梯增設', '青銀共居', '復康巴士'] },
+            { first: '來找樂趣', sec: ['老人共餐', '銀色奇肌班'] },
+            { first: '常見問題' },]
+        };
+
+      },
+      components: {},
+      computed: {},
+      created() { },
+      mounted() {
+
+      },
+      methods: {
+
+      },
+    });
+  </script>
+
+</body>
+
+</html>
